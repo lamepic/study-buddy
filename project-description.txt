@@ -1,0 +1,7 @@
+Study Buddy
+
+Some students find it challenging to study alone. They prefer having a study partner to collaborate with, share ideas, exchange notes, and quiz each other. However, it's often difficult to find someone whose study habits align perfectly with yours. This project aims to create a web application where students can have their own personalized dashboard to engage in activities similar to those of a study partner.
+
+This website allows students to organize their study materials into folders based on topics of interest. For example, a student who wants to study Backend Development may create a folder for "Spring Boot" and another for "Django". Within each topic folder, students can do various actions such as creating flashcards to memorize key terms, generating quizzes to test their understanding, and using an integrated editor for taking detailed notes. These features help students structure their study sessions effectively and enhance their learning experience.
+
+Additionally, students can register and log in to their accounts to access their profile and interact with the topics they've created. Each student has their own dashboard where they can easily manage their study materials and track their progress over time. By providing a user-friendly platform for collaborative studying, this website aims to empower students to excel academically and achieve their learning goals.
