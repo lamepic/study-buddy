@@ -1,14 +1,14 @@
-import PageLayout from "@/components/Layout/PageLayout";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import PageLayout from "@/components/Layout/PageLayout";
 
 export default function Home() {
   return (
     <PageLayout>
       <main className="grid place-items-center h-4/5">
         <div className="mt-5">
-          <div className="flex items-center w-11/12 justify-around gap-10">
+          <div className="flex flex-col md:flex-row items-center w-11/12 justify-around gap-10">
             <div>
               <Image
                 src="/assets/learning.gif"
@@ -30,7 +30,7 @@ export default function Home() {
                 className="w-8/12 mx-auto uppercase py-6 rounded-xl"
                 asChild
               >
-                <Link href="/signup">Get Started</Link>
+                <Link href="/auth/signup">Get Started</Link>
               </Button>
             </div>
           </div>

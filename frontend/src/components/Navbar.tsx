@@ -8,7 +8,7 @@ function Navbar() {
       <div className="flex items-center justify-between">
         <Logo />
         <Button className="rounded-xl px-8" asChild>
-          <Link href="/login">Log in</Link>
+          <Link href="/auth/login">Log in</Link>
         </Button>
       </div>
     </nav>

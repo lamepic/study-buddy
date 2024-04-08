@@ -68,7 +68,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border p-0 m-0;
   }
   body {
     @apply bg-background text-foreground;
@@ -77,6 +77,6 @@
 
 @layer utilities {
   .container {
-    @apply max-w-5xl;
+    @apply max-w-full md:max-w-5xl;
   }
 }
