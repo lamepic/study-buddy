@@ -6,15 +6,15 @@ import Footer from "../Footer";
 type PropType = {
   children: React.ReactNode;
   currentPageName: string;
-  pageName: string;
-  pageLink: string;
+  nextPageName: string;
+  nextPageLink: string;
 };
 
 function AuthLayout({
   children,
   currentPageName,
-  pageName,
-  pageLink,
+  nextPageName,
+  nextPageLink,
 }: PropType) {
   return (
     <div className="flex flex-col justify-between h-screen">
@@ -25,7 +25,7 @@ function AuthLayout({
               <Icon name="x" className="cursor-pointer" />
             </Link>
             <Button className="rounded-xl px-8" asChild>
-              <Link href={pageLink}>{pageName}</Link>
+              <Link href={nextPageLink}>{nextPageName}</Link>
             </Button>
           </div>
         </div>

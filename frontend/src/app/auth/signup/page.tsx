@@ -4,9 +4,9 @@ import SignupForm from "@/components/forms/SignupForm";
 function Signup() {
   return (
     <AuthLayout
-      currentPageName="Sign in"
-      pageName="Log in"
-      pageLink="/auth/login"
+      currentPageName="Sign up"
+      nextPageName="Log in"
+      nextPageLink="/auth/login"
     >
       <SignupForm />
     </AuthLayout>

@@ -5,8 +5,8 @@ function Login() {
   return (
     <AuthLayout
       currentPageName="Log in"
-      pageName="Sign up"
-      pageLink="/auth/signup"
+      nextPageName="Sign up"
+      nextPageLink="/auth/signup"
     >
       <LoginForm />
     </AuthLayout>
