@@ -15,6 +15,7 @@ export default function Home() {
                 alt="landing-page"
                 width={300}
                 height={300}
+                unoptimized
               />
             </div>
             <div className="flex flex-col items-center space-y-5 ">

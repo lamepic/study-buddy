@@ -13,9 +13,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={nunito.className}>{children}</body>
-    </html>
-  );
+  return <div className={nunito.className}>{children}</div>;
 }

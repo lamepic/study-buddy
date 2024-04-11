@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Icon from "../Icon";
 import { Button } from "../ui/button";
 import Footer from "../Footer";
+import { X } from "lucide-react";
 
 type PropType = {
   children: React.ReactNode;
@@ -22,7 +22,7 @@ function AuthLayout({
         <div className="px-12 mt-5">
           <div className="flex items-center justify-between">
             <Link href="/">
-              <Icon name="x" className="cursor-pointer" />
+              <X className="cursor-pointer" />
             </Link>
             <Button className="rounded-xl px-8" asChild>
               <Link href={nextPageLink}>{nextPageName}</Link>

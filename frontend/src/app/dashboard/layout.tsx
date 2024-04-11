@@ -1,19 +1,17 @@
 import React from "react";
-import { Nunito } from "next/font/google";
-import { cn } from "@/lib/utils";
+import type { Metadata } from "next";
 
-const nunito = Nunito({ subsets: ["latin"] });
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "Learning companion",
+};
 
 function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={cn(nunito.className, "bg-[#F9FAFB]")}>{children}</body>
-    </html>
-  );
+  return <>{children}</>;
 }
 
 export default Layout;
