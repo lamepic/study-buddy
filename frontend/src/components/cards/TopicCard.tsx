@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { Trash2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 type PropTypes = {
   name: string;
@@ -9,7 +12,13 @@ type PropTypes = {
 
 function TopicCard({ name }: PropTypes) {
   return (
-    <div className="relative group">
+    <motion.div
+      whileHover={{
+        scale: 1.1,
+        transition: { duration: 0.2 },
+      }}
+      className="relative group"
+    >
       <Trash2
         size={15}
         className="absolute top-3 right-2 cursor-pointer hidden group-hover:block"
@@ -23,7 +32,7 @@ function TopicCard({ name }: PropTypes) {
           <span className="text-wrap text-center capitalize">{name}</span>
         </Link>
       </Button>
-    </div>
+    </motion.div>
   );
 }
 

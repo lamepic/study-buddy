@@ -1,13 +1,17 @@
+import Link from "next/link";
 import Header from "@/components/Header";
-import TopicFeatureCard from "@/components/cards/TopicFeatureCard";
+import { FEATURES } from "@/lib/constants";
+import FeatureCard from "@/components/cards/FeatureCard";
 
 function TopicPage({ params }: { params: { id: string } }) {
   return (
     <>
       <Header title="Software engineer" />
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
-        {Array.from({ length: 3 }).map((card, idx) => (
-          <TopicFeatureCard key={idx} topic={params.id} feature="flashcard" />
+        {FEATURES.map((feature) => (
+          <Link href={`/${feature.name}/${params.id}`} key={feature.id}>
+            <FeatureCard topic={params.id} feature={feature} />
+          </Link>
         ))}
       </div>
     </>

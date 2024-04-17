@@ -8,7 +8,7 @@ function Navbar() {
     <nav className="container mx-auto mt-4">
       <div className="flex items-center justify-between">
         <Logo />
-        <Button className="rounded-xl px-8" asChild>
+        <Button className="rounded-md px-8" asChild>
           <Link href="/auth/login">Log in</Link>
         </Button>
         {/* <ProfileMenu /> */}
