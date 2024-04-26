@@ -1,12 +1,17 @@
 import React from "react";
 import NoteFile from "./NoteFile";
+import { NoteData } from "@/lib/types";
 
-function EditorSidebar() {
+type PropType = {
+  data: NoteData[];
+};
+
+function EditorSidebar({ data }: PropType) {
   return (
     <div className="h-full flex flex-col">
       <div className="flex-1 overflow-y-scroll max-h-full">
-        {Array.from({ length: 20 }).map((file, idx) => {
-          return <NoteFile key={idx} value={idx} />;
+        {data.map((note: NoteData) => {
+          return <NoteFile key={note.id} note={note} />;
         })}
       </div>
     </div>

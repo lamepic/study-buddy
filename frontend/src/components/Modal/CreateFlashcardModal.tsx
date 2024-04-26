@@ -14,15 +14,20 @@ import { Input } from "../ui/input";
 import { Loader2, Plus } from "lucide-react";
 import { Textarea } from "../ui/textarea";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { createAIFlashcards, createFlashcard } from "@/services/flashcard";
+import { CreateFlashcardType } from "@/lib/types";
+
+import { useSWRConfig } from "swr";
 
 type Inputs = {
   name: string;
   description: string;
 };
 
-function CreateFlashcardModal() {
+function CreateFlashcardModal({ topicId }: { topicId: string }) {
   const [open, setOpen] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState<boolean>(false);
+  const { mutate } = useSWRConfig();
   const {
     register,
     handleSubmit,
@@ -33,17 +38,13 @@ function CreateFlashcardModal() {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       setLoading(true);
-      const res = await fetch("/api/flashcard", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          description: data.description,
-          name: data.name,
-        }),
+      const aiFlashcards: { result: CreateFlashcardType[] } =
+        await createAIFlashcards(data);
+      await createFlashcard(+topicId, {
+        name: data.name,
+        questions: aiFlashcards.result[0],
       });
-      const result = await res.json();
+      mutate(`flashcards-${topicId}`);
     } catch (error) {
       console.log(error);
     } finally {
@@ -88,7 +89,7 @@ function CreateFlashcardModal() {
               {...register("description", { required: true })}
             />
           </div>
-          <Button className="ml-auto w-full" disabled={!isValid}>
+          <Button className="ml-auto w-full" disabled={!isValid || loading}>
             {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
             Create
           </Button>

@@ -10,12 +10,17 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Loader2, Plus } from "lucide-react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { createNote } from "@/services/note";
+import { useParams } from "next/navigation";
+import { useSWRConfig } from "swr";
 
 type Inputs = {
   name: string;
 };
 
 function CreateNoteModal() {
+  const params = useParams();
+  const { mutate } = useSWRConfig();
   const [open, setOpen] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState<boolean>(false);
   const {
@@ -28,7 +33,8 @@ function CreateNoteModal() {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       setLoading(true);
-      console.log(data);
+      const res = await createNote(data, Number(params.id));
+      mutate(`notes-${params.id}`, res);
     } catch (error) {
       console.log(error);
     } finally {
@@ -62,7 +68,7 @@ function CreateNoteModal() {
               {...register("name", { required: true })}
             />
           </div>
-          <Button className="ml-auto w-full" disabled={!isValid}>
+          <Button className="ml-auto w-full" disabled={!isValid || loading}>
             {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
             Create
           </Button>

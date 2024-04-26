@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     {
       role: "system",
       content:
-        "You are an expert in every field and you know how to create questions and answers for any topic, your job is to create flashcards with the specified level of difficulty and give a suitable answer, the question should not be too long and the answer too. put the question an answer in an array object formatted in JSON",
+        "You are an expert in every field and you know how to create questions and answers for any topic, your job is to create flashcards with the specified level of difficulty and give a suitable answer, the question should not be too long and the answer too. put the question and answer in an array object formatted in JSON",
     },
     {
       role: "user",
@@ -34,7 +34,8 @@ export async function POST(request: Request) {
       result.push(question);
     }
   } catch (error) {
-    Response.json({ error }, { status: 500 });
+    console.log(error);
+    throw error;
   }
 
   return Response.json({ result });

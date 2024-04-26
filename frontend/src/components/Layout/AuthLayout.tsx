@@ -30,7 +30,7 @@ function AuthLayout({
           </div>
         </div>
         <div className="container flex flex-col items-center justify-center min-h-[70vh]">
-          <div className="space-y-10 w-full grid place-items-center">
+          <div className="space-y-10 w-full flex flex-col items-center justify-center">
             <h1 className="text-3xl font-bold text-slate-800">
               {currentPageName}
             </h1>

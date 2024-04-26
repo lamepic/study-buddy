@@ -3,6 +3,7 @@
 import { ArrowLeft } from "lucide-react";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+// import { useStateProviderContext } from "@/StateProvider/StateProvider";
 
 type PropType = {
   title?: string;
@@ -11,9 +12,10 @@ type PropType = {
 
 function Header({ title, children }: PropType) {
   const router = useRouter();
+  // const { selectedTopic } = useStateProviderContext();
 
   return (
-    <div className="mt-8 bg-gray-300/30 p-2 rounded-md flex items-center justify-between">
+    <div className="mt-5 bg-gray-300/30 p-2 rounded-md flex items-center justify-between capitalize">
       <Button
         variant="ghost"
         className="flex items-center gap-3"
