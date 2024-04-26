@@ -16,14 +16,17 @@ import { useRouter } from "next/navigation";
 import ProfileModal from "./Modal/ProfileModal";
 import { Dialog } from "./ui/dialog";
 import { logout } from "@/services/auth";
+import { useSWRConfig } from "swr";
 
 function ProfileMenu() {
   const router = useRouter();
+  const { mutate } = useSWRConfig();
 
   const handleLogout = () => {
     logout();
     Cookies.remove("access_token");
-    router.replace("/auth/login");
+    mutate("user", null);
+    router.replace("/");
   };
 
   return (
