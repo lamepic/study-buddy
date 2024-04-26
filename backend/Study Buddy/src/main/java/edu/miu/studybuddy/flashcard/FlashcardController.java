@@ -1,5 +1,6 @@
 package edu.miu.studybuddy.flashcard;
 
+import edu.miu.studybuddy.flashcard.dto.CreateManyFlashcardDto;
 import edu.miu.studybuddy.lib.exceptions.CustomNotFoundException;
 import edu.miu.studybuddy.flashcard.dto.CreateFlashcardDto;
 import edu.miu.studybuddy.flashcard.dto.FlashcardResponse;
@@ -13,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin("*")
 @RequestMapping("/api/flashcards")
 @RestController
 public class FlashcardController {
@@ -21,15 +23,16 @@ public class FlashcardController {
         this.flashcardService = flashcardService;
     }
 
-    @PostMapping("")
-    public ResponseEntity<FlashcardResponse> create(@RequestBody @Valid CreateFlashcardDto data){
-        return new ResponseEntity<>(this.flashcardService.create(data), new HttpHeaders(), HttpStatus.CREATED);
+
+    @PostMapping("/{topicId}")
+    public ResponseEntity<FlashcardResponse> create(@PathVariable Integer topicId, @RequestBody @Valid CreateFlashcardDto data) throws CustomNotFoundException {
+        return new ResponseEntity<>(this.flashcardService.create(data, topicId), new HttpHeaders(), HttpStatus.CREATED);
     }
 
-    @GetMapping("")
-    public ResponseEntity<HashMap<String, List<FlashcardResponse>>> getAll(){
+    @GetMapping("/topic/{topicId}")
+    public ResponseEntity<HashMap<String, List<FlashcardResponse>>> getAll(@PathVariable Integer topicId){
         var response = new HashMap<String, List<FlashcardResponse>>();
-        response.put("flashcards", this.flashcardService.getAll());
+        response.put("flashcards", this.flashcardService.getAll(topicId));
         return ResponseEntity.ok(response);
     }
 
@@ -38,9 +41,9 @@ public class FlashcardController {
         return ResponseEntity.ok(this.flashcardService.getOne(id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<FlashcardResponse> updateOne(@PathVariable Integer id, @RequestBody @Valid CreateFlashcardDto data) throws CustomNotFoundException {
-        return ResponseEntity.ok(this.flashcardService.updateOne(id, data));
+    @PutMapping("/{id}/topic/{topicId}")
+    public ResponseEntity<FlashcardResponse> updateOne(@PathVariable Integer id, @PathVariable Integer topicId, @RequestBody @Valid CreateFlashcardDto data) throws CustomNotFoundException {
+        return ResponseEntity.ok(this.flashcardService.updateOne(id, topicId, data));
     }
 
     @DeleteMapping("/{id}")

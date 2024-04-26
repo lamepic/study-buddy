@@ -1,6 +1,7 @@
 package edu.miu.studybuddy.flashcard;
 
 import edu.miu.studybuddy.question.Question;
+import edu.miu.studybuddy.topic.Topic;
 import edu.miu.studybuddy.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -25,6 +26,6 @@ public class Flashcard {
     @OneToMany(mappedBy = "flashcard", cascade = CascadeType.ALL)
     private List<Question> questions;
     @ManyToOne
-    private User user;
+    private Topic topic;
 
 }

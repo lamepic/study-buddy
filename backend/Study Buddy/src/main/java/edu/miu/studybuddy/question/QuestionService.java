@@ -27,7 +27,7 @@ public class QuestionService {
                 .orElseThrow(() -> new CustomNotFoundException("Question with id not found"));
     }
 
-    public List<Question> getAll(){
-        return this.questionRepository.findAll();
+    public List<Question> getFlashcardQuestions(Integer flashcardId){
+        return this.questionRepository.findQuestionByFlashcardId(flashcardId);
     }
 }

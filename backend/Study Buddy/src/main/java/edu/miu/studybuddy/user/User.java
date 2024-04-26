@@ -1,6 +1,7 @@
 package edu.miu.studybuddy.user;
 
 import edu.miu.studybuddy.flashcard.Flashcard;
+import edu.miu.studybuddy.topic.Topic;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -45,7 +46,7 @@ public class User implements UserDetails {
     private LocalDate updatedAt;
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
-    private List<Flashcard> flashcards;
+    private List<Topic> topics;
 
     @Override
     public String getUsername() {

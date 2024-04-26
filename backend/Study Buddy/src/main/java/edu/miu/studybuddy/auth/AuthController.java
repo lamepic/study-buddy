@@ -11,11 +11,9 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("*")
 @RequestMapping("/api/auth")
 @RestController
 public class AuthController {
@@ -30,6 +28,7 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<UserResponse> register(@RequestBody @Valid RegisterUserDto data){
         UserResponse response = authService.register(data);
+//        return JWT instead of the user response.
         return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.CREATED);
     }
 

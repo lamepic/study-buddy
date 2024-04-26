@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface FlashcardRepository extends JpaRepository<Flashcard, Integer> {
-    List<Flashcard> findAllByUserId(Integer id);
-    Flashcard findByIdAndUserId(Integer id, Integer userId);
+    List<Flashcard> findAllByTopicId(Integer id);
+    Flashcard findByIdAndTopicId(Integer id, Integer topicId);
 }

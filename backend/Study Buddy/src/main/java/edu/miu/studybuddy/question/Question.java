@@ -18,6 +18,5 @@ public class Question {
     private String question;
     private String answer;
     @ManyToOne
-    @JoinColumn(name = "flashcard_id")
     private Flashcard flashcard;
 }
