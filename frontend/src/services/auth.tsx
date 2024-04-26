@@ -9,3 +9,7 @@ export const signup = async (data: SignupType) => {
 export const login = async (data: LoginType) => {
   return axios.post("/auth/login", data);
 };
+
+export const logout = () => {
+  delete axios.defaults.headers["Authorization"];
+};

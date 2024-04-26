@@ -15,11 +15,13 @@ import { LogOut, User } from "lucide-react";
 import { useRouter } from "next/navigation";
 import ProfileModal from "./Modal/ProfileModal";
 import { Dialog } from "./ui/dialog";
+import { logout } from "@/services/auth";
 
 function ProfileMenu() {
   const router = useRouter();
 
   const handleLogout = () => {
+    logout();
     Cookies.remove("access_token");
     router.replace("/auth/login");
   };
