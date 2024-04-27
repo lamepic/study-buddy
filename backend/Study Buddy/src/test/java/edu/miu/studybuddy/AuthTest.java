@@ -1,13 +1,12 @@
 package edu.miu.studybuddy;
 
 import edu.miu.studybuddy.lib.services.JwtService;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class StudyBuddyApplicationTests {
-
+public class AuthTest {
     @Test
     void testIfTokenIsExpired() {
         var jwtService = new JwtService();
@@ -15,5 +14,4 @@ class StudyBuddyApplicationTests {
         boolean actual = jwtService.isTokenExpired(token);
         Assertions.assertTrue(actual);
     }
-
 }
